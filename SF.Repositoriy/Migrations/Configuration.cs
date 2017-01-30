@@ -1,15 +1,18 @@
 namespace SF.Repositoriy.Migrations
 {
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SFContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SF.Repositoriy.SFContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(SFContext context)
+        protected override void Seed(SF.Repositoriy.SFContext context)
         {
             //  This method will be called after migrating to the latest version.
 

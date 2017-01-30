@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // AccountLogic.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -14,12 +14,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using SF.ILogic;
 using SF.IService;
 using SF.Service.UnitOfWork;
 using SF.Domain;
+using SF.Domain.ResultModels;
+using SF.Logic.Common;
 using SF.Logic.ModelConverter;
+using SF.Repositoriy.Entities;
 
 namespace SF.Logic
 {
@@ -33,7 +35,7 @@ namespace SF.Logic
             _unitOfWorkFactory = unitOfWorkFactory;
         }
 
-        public void Create(AccountDM model)
+        public void Create(AccountDomainModel model)
         {
             using (var unitWork = _unitOfWorkFactory.GetCurrentUnitOfWork())
             {
@@ -42,7 +44,7 @@ namespace SF.Logic
             }
         }
 
-        public void Edit(AccountDM model)
+        public void Edit(AccountDomainModel model)
         {
             using (var unitWork = _unitOfWorkFactory.GetCurrentUnitOfWork())
             {
@@ -60,13 +62,13 @@ namespace SF.Logic
             }
         }
 
-        public AccountDM Get(int id)
+        public AccountDomainModel Get(int id)
         {
             var user = _accountService.Get(id);
             return user.ToDomainModel();
         }
 
-        public List<AccountDM> GetAll()
+        public List<AccountDomainModel> GetAll()
         {
             var model = _accountService.Query();
             return !model.Any()
@@ -76,7 +78,7 @@ namespace SF.Logic
                     .ToList();
         }
 
-        public AccountDM LoginByEmailAndPassword(string email, string password)
+        public AccountDomainModel LoginByEmailAndPassword(string email, string password)
         {
             var model = _accountService.Query()
                 .FirstOrDefault(n => n.Email == email && n.Password == password);
@@ -95,28 +97,45 @@ namespace SF.Logic
             return model.ToDomainModel();
         }
 
-        public int GetPageCountByCondition(string serchCondition)
+        public PagedList<AccountDomainModel> GetAccounts(AccountQueryModel queryModel)
         {
-            return _accountService
-                    .Query()
-                    .Count(n => string.IsNullOrEmpty(serchCondition)
-                        || n.UserName.Contains(serchCondition)
-                        || n.Email.Contains(serchCondition));
-        }
+            var source = _accountService.Query();
 
-        public List<AccountDM> GetAccountsByCondition(string serchCondition)
-        {
-            var model = _accountService.Query()
-                .Where(n => string.IsNullOrEmpty(serchCondition)
-                    || n.UserName.Contains(serchCondition)
-                    || n.Email.Contains(serchCondition))
-                    .OrderBy(n => n.AccountId);
+            if (!string.IsNullOrEmpty(queryModel.UserName))
+            {
+                source = source.Where(x => x.UserName.Contains(queryModel.UserName));
+            }
 
-            return !model.Any()
-                ? null
-                : model.ToList()
-                    .Select(m => m.ToDomainModel())
-                    .ToList();
+            if (queryModel.ClientId > 0)
+            {
+                source = source.Where(x => x.ClientId == queryModel.ClientId);
+            }
+
+            if (queryModel.IsEnabled.HasValue)
+            {
+                source = source.Where(x => x.IsEnabled == queryModel.IsEnabled);
+            }
+
+            if (string.IsNullOrEmpty(queryModel.OrderBy))
+            {
+                queryModel.OrderBy = "AccountId";
+            }
+
+            var pageCount = source.Count();
+
+            source = queryModel.IsDesc
+                    ? source.SortByDescending(queryModel.OrderBy)
+                    : source.SortBy(queryModel.OrderBy);
+
+            var pageItems = source.Skip(queryModel.PageIndex * queryModel.PageSize)
+                .Take(queryModel.PageSize)
+                .ToList()
+                .Select(x => x.ToDomainModel())
+                .ToList();
+            var result = new PagedList<AccountDomainModel>(pageItems, queryModel.PageIndex,
+                queryModel.PageSize, pageCount);
+
+            return result;
         }
 
         public bool CheckExist(string email, string userId)
@@ -130,13 +149,13 @@ namespace SF.Logic
             return false;
         }
 
-        public AccountDM GetAccountByUserName(string username)
+        public AccountDomainModel GetAccountByUserName(string username)
         {
             var model = _accountService.Query().FirstOrDefault(n => n.UserName == username);
             return model == null ? null : model.ToDomainModel();
         }
 
-        public AccountDM GetAccountByEmail(string email)
+        public AccountDomainModel GetAccountByEmail(string email)
         {
             var model = _accountService.Query().FirstOrDefault(n => n.Email == email);
             return model == null ? null : model.ToDomainModel();

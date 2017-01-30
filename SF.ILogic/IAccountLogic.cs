@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // IAccountLogic.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -14,31 +14,31 @@
 using System.Collections.Generic;
 
 using SF.Domain;
+using SF.Domain.ResultModels;
+using SF.Repositoriy.Entities;
 
 namespace SF.ILogic
 {
     public interface IAccountLogic
     {
-        void Create(AccountDM model);
+        void Create(AccountDomainModel model);
 
-        void Edit(AccountDM model);
+        void Edit(AccountDomainModel model);
 
         void Delete(int id);
 
-        AccountDM Get(int id);
+        AccountDomainModel Get(int id);
 
-        List<AccountDM> GetAll();
+        List<AccountDomainModel> GetAll();
 
-        AccountDM LoginByEmailAndPassword(string email, string password);
+        AccountDomainModel LoginByEmailAndPassword(string email, string password);
 
-        int GetPageCountByCondition(string serchCondition);
-
-        List<AccountDM> GetAccountsByCondition(string serchCondition);
+        PagedList<AccountDomainModel> GetAccounts(AccountQueryModel queryModel);
 
         bool CheckExist(string email, string id);
 
-        AccountDM GetAccountByUserName(string username);
+        AccountDomainModel GetAccountByUserName(string username);
 
-        AccountDM GetAccountByEmail(string email);
+        AccountDomainModel GetAccountByEmail(string email);
     }
 }

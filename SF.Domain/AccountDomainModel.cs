@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // Account.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -13,12 +13,12 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using SF.Repositoriy.Entities;
 
 namespace SF.Domain
 {
-    public class AccountDM
+    public class AccountDomainModel : BaseDomainModel
     {
-        [Key]
         public int AccountId { get; set; }
 
         [StringLength(50)]
@@ -46,9 +46,5 @@ namespace SF.Domain
         public string Note { get; set; }
 
         public DateTime? LastLoggedIn { get; set; }
-
-        public DateTime CreatedOn { get; set; }
-
-        public byte[] RowVersion { get; set; }
     }
 }

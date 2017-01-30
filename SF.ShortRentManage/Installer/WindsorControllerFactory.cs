@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // WindsorControllerFactory.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //

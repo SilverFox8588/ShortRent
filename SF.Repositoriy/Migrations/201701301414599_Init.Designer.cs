@@ -7,13 +7,13 @@ namespace SF.Repositoriy.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class edituser_2017012303 : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(edituser_2017012303));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701230709451_edit-user_2017012303"; }
+            get { return "201701301414599_Init"; }
         }
         
         string IMigrationMetadata.Source

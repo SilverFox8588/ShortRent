@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // ServiceInstaller.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -30,7 +30,10 @@ namespace SF.Service.Installer
                 Component.For<IDbFactory>().ImplementedBy<DBFactory>().LifestyleSingleton(),
                 Component.For<SFContext>().LifestylePerWebRequest(),
 
-                Component.For<IAccountService>().ImplementedBy<AccountService>().LifestyleSingleton()
+                Component.For<IClientService>().ImplementedBy<ClientService>().LifestyleSingleton(),
+                Component.For<IAccountService>().ImplementedBy<AccountService>().LifestyleSingleton(),
+                Component.For<IOrderService>().ImplementedBy<OrderService>().LifestyleSingleton(),
+                Component.For<IRoomService>().ImplementedBy<RoomService>().LifestyleSingleton()
             );
         }
     }

@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // AccountController.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -28,27 +28,29 @@ namespace SF.ShortRentManage.Controllers
             _accountLogic = accountLogic;
         }
 
-        public IEnumerable<AccountDM> Get()
+        public IEnumerable<AccountDomainModel> Get()
         {
             return _accountLogic.GetAll();
         }
 
-        public AccountDM Get(int id)
+        public AccountDomainModel Get(int id)
         {
             return _accountLogic.Get(id);
         }
 
-        public void Post([FromBody]AccountDM domain)
+        public void Post([FromBody]AccountDomainModel domain)
         {
             _accountLogic.Create(domain);
         }
 
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]AccountDomainModel domain)
         {
+            _accountLogic.Edit(domain);
         }
 
         public void Delete(int id)
         {
+            _accountLogic.Delete(id);
         }
     }
 }

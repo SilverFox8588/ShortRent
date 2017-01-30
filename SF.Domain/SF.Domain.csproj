@@ -33,23 +33,23 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountDM.cs" />
+    <Compile Include="BaseDomainModel.cs" />
+    <Compile Include="QueryModels\AccountQueryModel.cs" />
+    <Compile Include="QueryModels\RoomQueryModel.cs" />
+    <Compile Include="QueryModels\OrderQueryModel.cs" />
+    <Compile Include="QueryModels\ClientQueryModel.cs" />
+    <Compile Include="QueryModels\BaseQueryModel.cs" />
+    <Compile Include="ResultModels\PagedList.cs" />
+    <Compile Include="RoomDomainModel.cs" />
+    <Compile Include="OrderItemDomainModel.cs" />
+    <Compile Include="OrderDomainModel.cs" />
+    <Compile Include="ClientDomainModel.cs" />
+    <Compile Include="AccountDomainModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SF.Repositoriy\SF.Repositoriy.csproj">
-      <Project>{FE3FF5E3-CDF5-4B67-A201-509838C9DFBF}</Project>
-      <Name>SF.Repositoriy</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

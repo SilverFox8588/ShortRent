@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // LogicInstaller.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -23,7 +23,10 @@ namespace SF.Logic.Installer
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
-                Component.For<IAccountLogic>().ImplementedBy<AccountLogic>().LifestylePerWebRequest()
+                Component.For<IClientLogic>().ImplementedBy<ClientLogic>().LifestylePerWebRequest(),
+                Component.For<IAccountLogic>().ImplementedBy<AccountLogic>().LifestylePerWebRequest(),
+                Component.For<IOrderLogic>().ImplementedBy<OrderLogic>().LifestylePerWebRequest(),
+                Component.For<IRoomLogic>().ImplementedBy<RoomLogic>().LifestylePerWebRequest()
                 );
         }
     }

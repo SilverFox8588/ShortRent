@@ -1,8 +1,8 @@
 ﻿//------------------------------------------------------------------------------
 // Account.cs
 //
-// <copyright from='2017' to='2117' company='Smartware Enterprises Inc'> 
-// Copyright (c) Smartware Enterprises Inc. All Rights Reserved. 
+// <copyright from='2017' to='2117' company='SF Technology'> 
+// Copyright (c) SF Technology. All Rights Reserved. 
 // Information Contained Herein is Proprietary and Confidential. 
 // </copyright>
 //
@@ -13,6 +13,7 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SF.Repositoriy.Entities
 {
@@ -20,8 +21,6 @@ namespace SF.Repositoriy.Entities
     {
         [Key]
         public int AccountId { get; set; }
-
-        public int ClientId { get; set; }
 
         [StringLength(50)]
         public string Login { get; set; }
@@ -45,8 +44,14 @@ namespace SF.Repositoriy.Entities
         [StringLength(50)]
         public string Email { get; set; }
 
+        [StringLength(2000)]
         public string Note { get; set; }
 
         public DateTime? LastLoggedIn { get; set; }
+
+        [ForeignKey("Client")]
+        public int ClientId { get; set; }
+
+        public virtual Client Client { get; set; }
     }
 }
