@@ -20,8 +20,7 @@ namespace SF.Logic.ModelConverter
                 Email = domain.Email,
                 Note = domain.Note,
                 LastLoggedIn = domain.LastLoggedIn,
-                CreatedOn = domain.CreatedOn,
-                RowVersion = domain.RowVersion
+                CreatedOn = domain.CreatedOn
             };
         }
 
@@ -40,8 +39,7 @@ namespace SF.Logic.ModelConverter
                 Email = data.Email,
                 Note = data.Note,
                 LastLoggedIn = data.LastLoggedIn,
-                CreatedOn = data.CreatedOn,
-                RowVersion = data.RowVersion
+                CreatedOn = data.CreatedOn
             };
         }
 
@@ -54,8 +52,7 @@ namespace SF.Logic.ModelConverter
                 IsEnabled = domain.IsEnabled,
                 Note = domain.Note,
                 UserQuota = domain.UserQuota,
-                CreatedOn = domain.CreatedOn,
-                RowVersion = domain.RowVersion
+                CreatedOn = domain.CreatedOn
             };
         }
 
@@ -68,8 +65,7 @@ namespace SF.Logic.ModelConverter
                 IsEnabled = data.IsEnabled,
                 Note = data.Note,
                 UserQuota = data.UserQuota,
-                CreatedOn = data.CreatedOn,
-                RowVersion = data.RowVersion
+                CreatedOn = data.CreatedOn
             };
         }
 
@@ -89,8 +85,7 @@ namespace SF.Logic.ModelConverter
                 IsEnabled = domain.IsEnabled,
                 Note = domain.Note,
                 RoomId = domain.RoomId,
-                CreatedOn = domain.CreatedOn,
-                RowVersion = domain.RowVersion
+                CreatedOn = domain.CreatedOn
             };
         }
 
@@ -110,8 +105,7 @@ namespace SF.Logic.ModelConverter
                 IsEnabled = data.IsEnabled,
                 Note = data.Note,
                 RoomId = data.RoomId,
-                CreatedOn = data.CreatedOn,
-                RowVersion = data.RowVersion
+                CreatedOn = data.CreatedOn
             };
         }
 
@@ -127,8 +121,7 @@ namespace SF.Logic.ModelConverter
                 Type = domain.Type,
                 Note = domain.Note,
                 OrderId = domain.OrderId,
-                CreatedOn = domain.CreatedOn,
-                RowVersion = domain.RowVersion
+                CreatedOn = domain.CreatedOn
             };
         }
 
@@ -144,8 +137,7 @@ namespace SF.Logic.ModelConverter
                 Type = data.Type,
                 Note = data.Note,
                 OrderId = data.OrderId,
-                CreatedOn = data.CreatedOn,
-                RowVersion = data.RowVersion
+                CreatedOn = data.CreatedOn
             };
         }
 
@@ -162,8 +154,7 @@ namespace SF.Logic.ModelConverter
                 IsEnabled = domain.IsEnabled,
                 Note = domain.Note,
                 ClientId = domain.ClientId,
-                CreatedOn = domain.CreatedOn,
-                RowVersion = domain.RowVersion
+                CreatedOn = domain.CreatedOn
             };
         }
 
@@ -180,8 +171,7 @@ namespace SF.Logic.ModelConverter
                 IsEnabled = data.IsEnabled,
                 Note = data.Note,
                 ClientId = data.ClientId,
-                CreatedOn = data.CreatedOn,
-                RowVersion = data.RowVersion
+                CreatedOn = data.CreatedOn
             };
         }
     }

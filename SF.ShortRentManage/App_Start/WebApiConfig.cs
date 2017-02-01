@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.Http.Cors;
+using SF.ShortRentManage.Filters;
 
 namespace SF.ShortRentManage
 {
@@ -10,6 +9,9 @@ namespace SF.ShortRentManage
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+            config.Filters.Add(new ValidateModelAttribute());
 
             // Web API routes
             config.MapHttpAttributeRoutes();

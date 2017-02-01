@@ -18,7 +18,5 @@ namespace SF.Repositoriy.Entities
     public class BaseModel
     {
         public DateTime CreatedOn { get; set; }
-
-        public byte[] RowVersion { get; set; }
     }
 }

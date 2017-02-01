@@ -13,17 +13,17 @@
 
 using System.Collections.Generic;
 using System.Web.Http;
-
 using SF.Domain;
 using SF.ILogic;
 
 namespace SF.ShortRentManage.Controllers
 {
-    public class AccountController : ApiController
+    public class AccountController : BaseApiController
     {
         private readonly IAccountLogic _accountLogic;
 
         public AccountController(IAccountLogic accountLogic)
+            : base(accountLogic)
         {
             _accountLogic = accountLogic;
         }

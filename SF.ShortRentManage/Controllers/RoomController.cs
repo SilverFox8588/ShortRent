@@ -18,11 +18,12 @@ using SF.ILogic;
 
 namespace SF.ShortRentManage.Controllers
 {
-    public class RoomController : ApiController
+    public class RoomController : BaseApiController
     {
         private readonly IRoomLogic _roomLogic;
 
-        public RoomController(IRoomLogic roomLogic)
+        public RoomController(IAccountLogic accountLogic, IRoomLogic roomLogic)
+            : base(accountLogic)
         {
             _roomLogic = roomLogic;
         }

@@ -18,11 +18,12 @@ using SF.ILogic;
 
 namespace SF.ShortRentManage.Controllers
 {
-    public class ClientController : ApiController
+    public class ClientController : BaseApiController
     {
         private readonly IClientLogic _clientLogic;
 
-        public ClientController(IClientLogic clientLogic)
+        public ClientController(IAccountLogic accountLogic, IClientLogic clientLogic)
+            : base(accountLogic)
         {
             _clientLogic = clientLogic;
         }

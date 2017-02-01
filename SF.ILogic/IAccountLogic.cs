@@ -37,8 +37,9 @@ namespace SF.ILogic
 
         bool CheckExist(string email, string id);
 
-        AccountDomainModel GetAccountByUserName(string username);
+        AccountDomainModel GetAccountByLogin(string login);
 
         AccountDomainModel GetAccountByEmail(string email);
+        AccountDomainModel GetAccountById(int id);
     }
 }

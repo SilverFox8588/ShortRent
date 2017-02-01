@@ -20,7 +20,8 @@ namespace SF.Domain
     {
         public int ClientId { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "客户名长度不能超过50个字符。")]
+        [Required(ErrorMessage = "Client name cannot be empty.")]
         public string Name { get; set; }
 
         public bool IsEnabled { get; set; }

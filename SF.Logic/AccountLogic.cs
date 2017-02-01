@@ -149,9 +149,15 @@ namespace SF.Logic
             return false;
         }
 
-        public AccountDomainModel GetAccountByUserName(string username)
+        public AccountDomainModel GetAccountByLogin(string login)
         {
-            var model = _accountService.Query().FirstOrDefault(n => n.UserName == username);
+            var model = _accountService.Query().FirstOrDefault(n => n.Login == login);
+            return model == null ? null : model.ToDomainModel();
+        }
+
+        public AccountDomainModel GetAccountById(int id)
+        {
+            var model = _accountService.Query().FirstOrDefault(n => n.AccountId == id);
             return model == null ? null : model.ToDomainModel();
         }
 

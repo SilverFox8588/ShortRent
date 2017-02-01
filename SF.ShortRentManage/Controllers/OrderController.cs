@@ -18,11 +18,12 @@ using SF.ILogic;
 
 namespace SF.ShortRentManage.Controllers
 {
-    public class OrderController : ApiController
+    public class OrderController : BaseApiController
     {
         private readonly IOrderLogic _orderLogic;
 
-        public OrderController(IOrderLogic orderLogic)
+        public OrderController(IAccountLogic accountLogic, IOrderLogic orderLogic)
+            : base(accountLogic)
         {
             _orderLogic = orderLogic;
         }

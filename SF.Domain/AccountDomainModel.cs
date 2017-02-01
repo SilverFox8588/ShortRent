@@ -25,6 +25,7 @@ namespace SF.Domain
         public string Login { get; set; }
 
         [StringLength(50)]
+        [Required(ErrorMessage = "User name cannot be empty.")]
         public string UserName { get; set; }
 
         public bool IsEnabled { get; set; }
